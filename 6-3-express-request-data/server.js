@@ -36,6 +36,11 @@ LAB SETUP INSTRUCTIONS
  *     const app = express();
  *     app.listen(3000, ()=> console.log(...));
  * 
+ */
+   import express from "express";
+   const app = express();
+   app.listen(3000, ()=> console.log("server running"));
+/*
  *============================================
  * TODO-2 (/echo route):
  * ============================================
@@ -47,6 +52,16 @@ LAB SETUP INSTRUCTIONS
  *     app.get("/echo", (req,res)=>{ ... });
  *     const {name, age} = req.query;
  *
+ * 
+ */
+   app.get("/echo", (req, res) => {
+      const {name, age} = req.query;
+      if (!name || !age)
+         res.status(400),json({ok: false, error:"Name & age required"})
+      else
+         res.json({ok: true, name, age, msg:`Hello ${name}, you are ${age}`})
+   })
+ /*
  * ============================================
  * TODO-3 (/profile/:first/:last route):
  * ============================================
@@ -56,6 +71,10 @@ LAB SETUP INSTRUCTIONS
  *   HINT:
  *     app.get("/profile/:first/:last", (req,res)=>{ ... });
  *     const { first, last } = req.params;
+ * 
+ */
+   
+ /*
  *
  * ============================================
  * TODO-4 (Param middleware):
@@ -104,8 +123,8 @@ LAB SETUP INSTRUCTIONS
  *
  */
 
-import express from "express";
-const app = express();
+// import express from "express";
+// const app = express();
 
 
 // create server
