@@ -73,7 +73,10 @@ LAB SETUP INSTRUCTIONS
  *     const { first, last } = req.params;
  * 
  */
-   
+   app.get("/profile/:first/:last", (req,res)=>{
+      const { first, last } = req.params;
+      res.json({ok: true, fullName: `${first} ${last}`})
+   });
  /*
  *
  * ============================================
