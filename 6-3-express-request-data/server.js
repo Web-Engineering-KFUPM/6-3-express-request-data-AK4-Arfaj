@@ -89,6 +89,18 @@ LAB SETUP INSTRUCTIONS
  *   HINT:
  *     app.param("userId", (req,res,next,userId)=>{ ... });
  *
+ */
+   app.param("userId", (req,res,next,userId)=> {
+      const userIdNum = Number(userId);
+      if (!Number.isNaN(userIdNum) && userIdNum > 0) 
+         res.json({ok:false, error:"userId must be positive number"})
+      else
+         req.userIdNum = userIdNum
+         next()
+   });
+
+ /*
+ * 
  * ============================================
  * TODO-5 (/users/:userId route):
  * ============================================
@@ -131,18 +143,18 @@ LAB SETUP INSTRUCTIONS
 
 
 // create server
-
+// done
 
 // Query params: /echo?name=Ali&age=22
-
+// done
 
 // Route params: /profile/First/Last
-
+// done
 
 // Route param middleware example: /users/42
-
+// in progress
 
 // Route params: /users/:userId route
-
+// to be done
 
 
