@@ -57,7 +57,7 @@ LAB SETUP INSTRUCTIONS
    app.get("/echo", (req, res) => {
       const {name, age} = req.query;
       if (!name || !age)
-         res.status(400),json({ok: false, error:"Name & age required"})
+         res.status(400).json({ok: false, error:"Name & age required"})
       else
          res.json({ok: true, name, age, msg:`Hello ${name}, you are ${age}`})
    })
@@ -92,7 +92,7 @@ LAB SETUP INSTRUCTIONS
  */
    app.param("userId", (req,res,next,userId)=> {
       const userIdNum = Number(userId);
-      if (!Number.isNaN(userIdNum) && userIdNum > 0) 
+      if (Number.isNaN(userIdNum) || userIdNum <= 0) 
          res.json({ok:false, error:"userId must be positive number"})
       else
          req.userIdNum = userIdNum
@@ -157,9 +157,9 @@ LAB SETUP INSTRUCTIONS
 // done
 
 // Route param middleware example: /users/42
-// in progress
+// done
 
 // Route params: /users/:userId route
-// to be done
+// done
 
 
