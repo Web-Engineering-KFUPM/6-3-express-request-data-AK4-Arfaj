@@ -109,6 +109,11 @@ LAB SETUP INSTRUCTIONS
  *   HINT:
  *     app.get("/users/:userId", (req,res)=>{ ... });
  *
+ */
+   app.get("/users/:userId", (req,res)=>{
+      res.json({ok:true, userId: req.userIdNum}) // its weird for me but k i guess
+   });
+ /*
  *============================================
  *Test the following URLS
  *============================================
